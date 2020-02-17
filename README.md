@@ -11,3 +11,6 @@ app.py - done
 ESI Doc ref:
 https://eveonline-third-party-documentation.readthedocs.io/en/latest/esi/
 
+Concrete ESI docs:
+https://esi.evetech.net/ui/
+
