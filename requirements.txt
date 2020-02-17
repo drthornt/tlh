@@ -1,0 +1,13 @@
+# webapp libs
+Flask
+Flask-Login
+Flask-Migrate
+sqlalchemy
+pyopenssl
+
+# because simplejson is better than built in json and flask uses it
+simplejson
+
+# eve online ESI lib
+esipy
+
