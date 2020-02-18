@@ -21,18 +21,19 @@
 
 {% else %}
 Hello <strong>{{ current_user.character_name }}</strong><br>
-Your wallet is currently full of <strong>{{ wallet.data }}</strong> ISKs
 <br>
+{{ kills.data }}
 <br>
 
-<strong>Your ESI Informations:</strong>
-<dl>
-    <dt>Character ID:</dt><dd>{{ current_user.character_id }}</dd>
-    <dt>Character Owner Hash:</dt><dd>{{ current_user.character_owner_hash }}</dd>
-    <dt>Access Token:</dt><dd>{{ current_user.access_token }}</dd>
-    <dt>Access Token valid until:</dt><dd>{{ current_user.access_token_expires }}</dd>
-    <dt>Refresh Token:</dt><dd>{{ current_user.refresh_token }}</dd>
-</dl>
+<table>
+  {% for kill in kills.data %}
+    <tr>
+      <th>Name</th>
+      <td>{{ kill }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
 <br>
 <br>
 <br>

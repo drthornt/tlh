@@ -151,7 +151,7 @@ def login():
     session['token'] = token
     return redirect(esisecurity.get_auth_uri(
         state=token,
-        scopes=['esi-wallet.read_character_wallet.v1']
+        scopes=['esi-wallet.read_character_wallet.v1','esi-killmails.read_killmails.v1']
     ))
 
 
@@ -241,6 +241,21 @@ def index():
         'wallet': wallet,
     })
 
+@app.route('/kills')
+def ingestkills():
+    kills = None
+
+    if current_user.is_authenticated:
+        esisecurity.update_token(current_user.get_sso_data())
+
+        op =  esiapp.op['characters_character_id_killmails_recent'](
+            character_id=current_user.character_id
+        )
+        kills = esiclient.request(op)
+
+    return render_template('kills.html', **{
+        'kills': kills,
+    })
 
 if __name__ == '__main__':
     app.run(ssl_context=('cert.pem', 'key.pem'),port=config.PORT, host=config.HOST)
